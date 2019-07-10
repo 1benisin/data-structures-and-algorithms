@@ -9,9 +9,10 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-  const newStr = str.append(' The end.');
+  const newStr = str.concat(' The end.');
   return newStr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -27,7 +28,8 @@ console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
 const appendFirstToLast = (arr) => {
-  // Solution code here...
+  let firstElement = arr[0];
+  arr.push(firstElement);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,7 +48,7 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
-  // Solution code here...
+  obj.yearBorn = year;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -62,9 +64,8 @@ setStatusAsAuthor(people);
 console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
-const setStatusAsAuthor = (people) => {
-  // Solution code here...
-};
+const setStatusAsAuthor = (people) => people.forEach(person => person.isAuthor = true);
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -81,10 +82,8 @@ append(a, b);
 console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
-const append = (arr1, arr2) => {
-  // Solution code here...
+const append = (arr1, arr2) => arr2.forEach(element => arr1.push(element));
 
-};
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
