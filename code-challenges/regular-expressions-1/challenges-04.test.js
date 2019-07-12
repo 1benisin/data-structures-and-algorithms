@@ -42,10 +42,8 @@ const citiesAtoJ = (arr) => {
   let regEx = /^[A-J]/;
   let anw = [];
   arr.forEach(element => {
-    if (element.match(regEx) !== null) {
-      console.log(element);
+    if (element.match(regEx) !== null)
       anw.push(element);
-    }
   });
   return anw;
 }
@@ -79,8 +77,13 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  let regEx = /[a-z0-9]+\s/gi
+  let anw = str.match(regEx);
+  if (anw === null) return [];
+  return anw;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -95,7 +98,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+  let regEx = /[aeiou]/gi
+  return str.replace(regEx, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,7 +115,8 @@ Hint: All of these words end with the letters "ells".
 const seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
 const findShells = (str) => {
-  // Solution code here...
+  let regEx = /\bs[a-z]*(ells)/gi
+  return str.match(regEx);
 };
 
 /* ------------------------------------------------------------------------------------------------
