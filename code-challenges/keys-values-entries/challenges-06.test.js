@@ -15,8 +15,13 @@ const courseInfo = {
 };
 
 const getCourseKeys = (obj) => {
-  // Solution code here...
+  let keyArr = [];
+  for (let key in obj) {
+    keyArr.push(key);
+  }
+  return keyArr;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -70,9 +75,12 @@ let characters = [
   }
 ];
 
+
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(element => {
+    houses.push(element.house);
+  });
   return houses;
 };
 
@@ -89,7 +97,13 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let value = false;
+  arr.forEach(element => {
+    if (element.name === character && element.children.length > 0)
+      value = true;
+  });
+  console.log(value);
+  return value;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +115,13 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let value = false;
+  arr.forEach(element => {
+    if (element.name === character && element.children.length > 0)
+      value = true;
+  });
+  console.log(value);
+  return value;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,7 +131,13 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let charArray = [];
+  arr.forEach(obj => {
+    charArray.push(obj.name);
+    if (obj.spouse !== null) charArray.push(obj.spouse);
+    for (let child of obj.children) charArray.push(child);
+  });
+  return charArray.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
