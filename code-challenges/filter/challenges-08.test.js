@@ -1,5 +1,6 @@
 'use strict';
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -9,7 +10,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  return arr.filter(e => e % 2);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +25,8 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-  // Solution code here...
+  let regex = /[aeiou]/i;
+  return arr.filter(str => regex.test(str));
 };
 
 
@@ -37,7 +39,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  return arr.filter(v => !forbiddenValues.includes(v));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -78,9 +80,8 @@ const snorlaxData = {
   name: 'snorlax',
   weight: 4600,
 };
-
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  return arr.filter(e => e.baseStat > minBaseStat);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,12 +93,16 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  let results = [];
+  getBaseStatGreaterThan(arr, minBaseStat).forEach(s => results.push(s.stat.name));
+  // return statObj;
+  return results;
 };
+// console.log(getStatName(snorlaxData.stats, 50));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
-
+ 
 Write a function named getCharactersWithoutChildren that, given the array of characters, below, uses filter to return an array of all characters without children.
 ------------------------------------------------------------------------------------------------ */
 
@@ -145,30 +150,43 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
+  return arr.filter(e => !Object.keys(e).includes('children'));
 };
+// console.log(getCharactersWithoutChildren(characters));
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
-
+ 
 Write a function named evenOddNumericValues that, given an array as input, uses filter to remove any non-numeric values, then uses map to generate a new array containing the string 'even' or 'odd', depending on the original value.
-
+ 
 For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 'odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+  return arr.filter(e => {
+    return typeof e === 'string'
+  })
+    .filter(i => {
+      console.log(i);
+      return !isNaN(i)
+    })
+    .map(x => {
+      console.log(x);
+      return x % 2 ? 'odd' : 'even';
+    });
 };
+// console.log(evenOddNumericValues(['1', 2, 3, '4', 5, '6']));
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
-
+ 
 All the code below will verify that your functions are working to solve the challenges.
-
+ 
 DO NOT CHANGE any of the below code.
-
+ 
 Run your tests from the console: jest challenges-08.test.js
-
+ 
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
@@ -266,3 +284,4 @@ describe('Testing challenge 7', () => {
     expect(evenOddNumericValues(['1', 2, 3, '4', 5, '6'])).toStrictEqual(['even', 'odd', 'odd']);
   });
 });
+
