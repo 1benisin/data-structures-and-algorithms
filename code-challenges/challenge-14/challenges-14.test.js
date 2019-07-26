@@ -9,7 +9,7 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(str => str.charAt(0).toUpperCase() + str.slice(1))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -22,71 +22,76 @@ The names should be combined into a single string with each character name separ
 For example, "Lando Calrisian - Boba Fett - Princess Amidala".
 ------------------------------------------------------------------------------------------------ */
 
-let starWarsData = [{
-  name: 'Luke Skywalker',
-  height: '172',
-  mass: '77',
-  hair_color: 'blond',
-  skin_color: 'fair',
-  eye_color: 'blue',
-  birth_year: '19BBY',
-  gender: 'male',
-},
-{
-  name: 'C-3PO',
-  height: '167',
-  mass: '75',
-  hair_color: 'n/a',
-  skin_color: 'gold',
-  eye_color: 'yellow',
-  birth_year: '112BBY',
-  gender: 'n/a'
-},
-{
-  name: 'R2-D2',
-  height: '96',
-  mass: '32',
-  hair_color: 'n/a',
-  skin_color: 'white, blue',
-  eye_color: 'red',
-  birth_year: '33BBY',
-  gender: 'n/a'
-},
-{
-  name: 'Darth Vader',
-  height: '202',
-  mass: '136',
-  hair_color: 'none',
-  skin_color: 'white',
-  eye_color: 'yellow',
-  birth_year: '41.9BBY',
-  gender: 'male'
-},
-{
-  name: 'Leia Organa',
-  height: '150',
-  mass: '49',
-  hair_color: 'brown',
-  skin_color: 'light',
-  eye_color: 'brown',
-  birth_year: '19BBY',
-  gender: 'female'
-},
-{
-  name: 'Pex Kylar',
-  height: '180',
-  mass: '190',
-  hair_color: 'orange',
-  skin_color: 'brown',
-  eye_color: 'none',
-  birth_year: '27BBY',
-  gender: 'n/a'
-}];
+let starWarsData = [
+  {
+    name: 'Luke Skywalker',
+    height: '172',
+    mass: '77',
+    hair_color: 'blond',
+    skin_color: 'fair',
+    eye_color: 'blue',
+    birth_year: '19BBY',
+    gender: 'male',
+  },
+  {
+    name: 'C-3PO',
+    height: '167',
+    mass: '75',
+    hair_color: 'n/a',
+    skin_color: 'gold',
+    eye_color: 'yellow',
+    birth_year: '112BBY',
+    gender: 'n/a'
+  },
+  {
+    name: 'R2-D2',
+    height: '96',
+    mass: '32',
+    hair_color: 'n/a',
+    skin_color: 'white, blue',
+    eye_color: 'red',
+    birth_year: '33BBY',
+    gender: 'n/a'
+  },
+  {
+    name: 'Darth Vader',
+    height: '202',
+    mass: '136',
+    hair_color: 'none',
+    skin_color: 'white',
+    eye_color: 'yellow',
+    birth_year: '41.9BBY',
+    gender: 'male'
+  },
+  {
+    name: 'Leia Organa',
+    height: '150',
+    mass: '49',
+    hair_color: 'brown',
+    skin_color: 'light',
+    eye_color: 'brown',
+    birth_year: '19BBY',
+    gender: 'female'
+  },
+  {
+    name: 'Pex Kylar',
+    height: '180',
+    mass: '190',
+    hair_color: 'orange',
+    skin_color: 'brown',
+    eye_color: 'none',
+    birth_year: '27BBY',
+    gender: 'n/a'
+  }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  const lukeMass = 77;
+  return arr.filter(data => data.mass > lukeMass)
+    .map(char => char.name)
+    .join(' - ')
 };
 
+// console.log(biggerThanLuke(starWarsData));
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 Write a function named sortBy that takes in an array of objects, each of which has a particular property, and sorts those objects by that property, lowest to highest, returning the same array.
@@ -102,9 +107,17 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => {
+    if (a[property] < b[property]) { return -1; }
+    if (a[property] > b[property]) { return 1; }
+    return 0;
+  })
 };
-
+// console.log(sortBy('price', [
+//   { name: 'Sweatshirt', price: 45 },
+//   { name: 'Bookmark', price: 2.50 },
+//   { name: 'Tote bag', price: 15 }
+// ]))
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -118,7 +131,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  return /^https:\/\//.test(url)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -223,3 +236,5 @@ describe('Testing challenge 5', () => {
     expect(detectTicTacToeWin([['', '', ''], ['O', 'O', ''], ['X', 'O', 'X']])).toEqual(false);
   });
 });
+
+
